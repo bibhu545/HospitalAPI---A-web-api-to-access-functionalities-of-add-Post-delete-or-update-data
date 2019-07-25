@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6B26C093-3FA4-43ED-8E74-A889ACBD629D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccess</RootNamespace>
+    <AssemblyName>DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccessClass.cs" />
+    <Compile Include="doctors.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="documents.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetAllDoctors_Result.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetDoctorDetailsV2_Result.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetDoctorDetails_Result.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetFilesFromDBV2_Result.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetFilesFromDB_Result.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetFormattedFilesFromDBV2_Result.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="health_users.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HospitalDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HospitalDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HospitalDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HospitalDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HospitalDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="hospitals.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="recordtypes.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="speciality.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="users.cs">
+      <DependentUpon>HospitalDataModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="HospitalDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HospitalDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="HospitalDataModel.edmx.diagram">
+      <DependentUpon>HospitalDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HospitalDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HospitalDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>HospitalDataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="HospitalDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HospitalDataModel.edmx</DependentUpon>
+      <LastGenOutput>HospitalDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataModels\DataModels.csproj">
+      <Project>{7d2a40b7-d24e-4d8d-a87b-781c7decce21}</Project>
+      <Name>DataModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
